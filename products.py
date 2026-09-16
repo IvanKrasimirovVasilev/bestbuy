@@ -30,7 +30,7 @@ class Product:
 
     def buy(self, quantity):
         if quantity > self.quantity:
-            raise ValueError("Not enough quantity. We have only " +  str(self.quantity) + "items" )
+            raise ValueError("Not enough quantity. We have only " +  str(self.quantity) + " items" )
         else:
             self.set_quantity(self.quantity - quantity)
             return quantity * self.price
