@@ -80,7 +80,7 @@ def start(store_obj):
                 if quantity > available_quantity:
                     print(
                         "Not enough " + selected_product.name +
-                        ". You can order only " + str(available_quantity) + " more."
+                        ". You can order max " + str(available_quantity) + "."
                     )
                     continue
 
@@ -103,7 +103,7 @@ def start(store_obj):
                 for product, quantity in order_history:
                     print(
 
-                        str(quantity) + " x " + product.name  + str(quantity * product.price) + " euro"
+                        str(quantity) + " x " + product.name  + " - " + str(quantity * product.price) + " euro"
                     )
 
                 print("Total price: " + str(total_order_price) + " euro")
