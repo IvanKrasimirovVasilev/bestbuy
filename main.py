@@ -102,7 +102,6 @@ def start(store_obj):
 
                 for product, quantity in order_history:
                     print(
-
                         str(quantity) + " x " + product.name  + " - " + str(quantity * product.price) + " euro"
                     )
 
