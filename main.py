@@ -39,7 +39,11 @@ def start(store_obj):
 
             while True:
 
-                product_number = int(input("Which product do you want? (0 to finish): "))
+                try:
+                    product_number = int(input("Which product do you want? (0 to finish): "))
+                except ValueError:
+                    print("Invalid input. Please enter a product number.")
+                    continue
 
                 if product_number == 0:
                     break
@@ -50,7 +54,17 @@ def start(store_obj):
 
                 selected_product = active_products[product_number - 1]
 
-                quantity = int(input("How many " + selected_product.name + " would you like to order? "))
+                try:
+                    quantity = int(input(
+                        "How many " + selected_product.name + " would you like to order? "
+                    ))
+                except ValueError:
+                    print("Invalid quantity. Please enter a number.")
+                    continue
+
+                if quantity <= 0:
+                    print("Quantity must be greater than 0.")
+                    continue
 
                 already_ordered = 0
 
@@ -84,5 +98,3 @@ def start(store_obj):
 
 if __name__ == "__main__":
     start(best_buy)
-
-    # TODO: Add an option to print the order summary with products, quantities, and total price.
