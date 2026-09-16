@@ -10,6 +10,9 @@ product_list = [
 best_buy = store.Store(product_list)
 
 def start(store_obj):
+    order_history = []
+    total_order_price = 0
+
     while True:
         print("1. List all products in store")
         print("2. Show total amount in store")
@@ -87,10 +90,27 @@ def start(store_obj):
 
             print("Order cost: " + str(total_price))
 
-        elif choice == "4":
-            print("Thanks and bye!")
-            break
+            order_history.extend(shopping_list)
+            total_order_price += total_price
 
+
+        elif choice == "4":
+
+            if order_history:
+
+                print("\nYour order:")
+
+                for product, quantity in order_history:
+                    print(
+
+                        str(quantity) + " x " + product.name  + str(quantity * product.price) + " euro"
+                    )
+
+                print("Total price: " + str(total_order_price) + " euro")
+
+            print("Thank you and goodbye!")
+
+            break
         else:
             print("Invalid choice. Please choose a number between 1 and 4.")
 
