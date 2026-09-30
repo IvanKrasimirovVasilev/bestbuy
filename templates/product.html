@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ product.name }} | Best Buy</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+
+            <a class="navbar__brand" href="/">
+                Best Buy
+            </a>
+
+            <div class="navbar__links">
+                <a class="navbar__link" href="/">Home</a>
+                <a class="navbar__link" href="/products">Products</a>
+                <a class="navbar__link" href="/cart">Cart</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <main class="product">
+        <div class="container">
+
+            <a
+                href="/products"
+                class="product__back"
+            >
+                ← Back to products
+            </a>
+
+            <div class="product__content">
+
+                <div class="product__info">
+
+                    <span class="product__label">
+                        PRODUCT
+                    </span>
+
+                    <h1 class="product__title">
+                        {{ product.name }}
+                    </h1>
+
+                    <p class="product__price">
+                        {{ product.price }} €
+                    </p>
+
+                    <p class="product__stock">
+                        {{ product.quantity }} items available
+                    </p>
+
+                    <form
+                        class="product__form"
+                        method="POST"
+                        action="/buy"
+                    >
+
+                        <input
+                            type="hidden"
+                            name="product_name"
+                            value="{{ product.name }}"
+                        >
+
+                        <div class="product__quantity">
+
+                            <label
+                                class="form-label product__quantity-label"
+                                for="quantity"
+                            >
+                                Quantity
+                            </label>
+
+                            <input
+                                class="form-control product__quantity-input"
+                                type="number"
+                                id="quantity"
+                                name="quantity"
+                                min="1"
+                                max="{{ product.quantity }}"
+                                value="1"
+                                required
+                            >
+
+                        </div>
+
+                        <button
+                            class="btn btn-primary product__button"
+                            type="submit"
+                        >
+                            Add to cart
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Productspage | Best Buy
+{% endblock %}
+
+
+{% block content %}
+
+
+    <main class="products">
+        <div class="container">
+
+            <div class="products__header">
+                <span class="products__label">OUR STORE</span>
+                <h1 class="products__title">Products</h1>
+                <p class="products__text">
+                    Choose the product that's right for you.
+                </p>
+            </div>
+
+            <div class="row g-4 products__grid">
+
+                {% for product in products %}
+
+                    <div class="col-12 col-md-6 col-lg-4">
+
+                        <article class="product-card">
+
+                            <div class="product-card__body">
+
+                                <h2 class="product-card__title">
+                                    {{ product.name }}
+                                </h2>
+
+                                <p class="product-card__price">
+                                    {{ product.price }} €
+                                </p>
+
+                                <p class="product-card__stock">
+                                    {{ product.quantity }} available
+                                </p>
+
+                            </div>
+
+                            <a
+                                href="/product/{{ loop.index0 }}"
+                                class="btn btn-primary product-card__button"
+                            >
+                                View product
+                            </a>
+
+                        </article>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </main>
+
+
+
+{% endblock %}
